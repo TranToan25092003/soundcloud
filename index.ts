@@ -1,1 +1,26 @@
-console.log("oke");
+import express, { Express } from "express";
+import dotenv from "dotenv";
+import * as database from "./config/database";
+import { clientRouter } from "./router/client/index.router";
+
+dotenv.config(); //dotenv
+
+// server
+const app: Express = express();
+const port: number | string = process.env.PORT;
+//end server
+
+database.connect(); // connect to db
+
+// setup view
+app.set("views", "./views");
+app.set("view engine", "pug");
+//end setup view
+
+// use router client
+clientRouter(app);
+//end use router client
+
+app.listen(port, (): void => {
+  console.log(`server is running at ${port}`);
+});
