@@ -10,7 +10,14 @@ const app: Express = express();
 const port: number | string = process.env.PORT;
 //end server
 
+// body parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+//end body parser
+
 database.connect(); // connect to db
+
+app.use(express.static("public")); // use static file (Html css)
 
 // setup view
 app.set("views", "./views");

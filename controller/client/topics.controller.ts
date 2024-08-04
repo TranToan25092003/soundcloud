@@ -10,8 +10,11 @@ export const getAllTopics = async (
     const topics = await Topic.find({
       deleted: false,
     });
-    console.log(topics);
-    res.render("client/pages/topics/index.pug");
+
+    res.render("client/pages/topics/index.pug", {
+      pagetitle: "topic songs",
+      topics: topics,
+    });
   } catch (error) {
     res.send("error");
   }

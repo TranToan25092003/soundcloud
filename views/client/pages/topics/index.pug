@@ -1,7 +1,16 @@
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Topics
-    body 
-        h1 topic
+extends ../../layouts/default.pug
+include ../../mixins/boxHead.pug
+block main
+    .container.my-3 
+        .row 
+            .col-12 
+                +box-head(pagetitle)
+        .row
+            each item in topics
+                .col-4.mb-3 
+                    div(class="card")
+                        img(src=item.avatar)
+                        div(class="card-body")
+                            h5(class="card-title") #{item.title}
+                            p(class="card-text") #{item.description}
+                            a(href=`/songs/${item.slug}` class="btn btn-primary") Detail 

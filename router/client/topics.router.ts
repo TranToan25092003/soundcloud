@@ -1,4 +1,4 @@
-import { Request, Response, Router } from "express";
+import { Router } from "express";
 import * as controller from "../../controller/client/topics.controller";
 const router: Router = Router();
 
